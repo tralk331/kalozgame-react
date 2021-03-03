@@ -1,0 +1,149 @@
+.form-trans-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.form-trans-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 200ms, transform 200ms;
+}
+.form-trans-exit {
+  opacity: 1;
+}
+.form-trans-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 200ms, transform 200ms;
+}
+.auth-form {
+  overflow: hidden;
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  background-image: linear-gradient($color5, $color6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: $color1;
+  }
+  form {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+    .change-form {
+      font-size: 1rem;
+      font-family: "Quicksand";
+      color: $color1;
+      text-decoration: underline $color2;
+      text-align: center;
+      cursor: pointer;
+      &:hover {
+        color: $color2;
+      }
+    }
+    .error-label {
+      color: rgb(255, 61, 61);
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+    /*         svg{
+            size: 30px;
+            width: 3em;
+            height: 3em;
+            color: $color1;
+        } */
+    input {
+      font-family: "Lato", sans-serif;
+      border: 1px solid $color6;
+      background-color: $color1;
+      color: $color6;
+      font-size: 1.8em;
+      outline: none;
+    }
+    button {
+      background-color: $color1;
+      border: 1px solid $color6;
+      color: $color6;
+      font-size: 1.5rem;
+      outline: none;
+      &:hover {
+        transform: scale(1.1);
+      }
+      &:active {
+        transform: scale(1.1);
+      }
+    }
+  }
+  .reg-form {
+    gap: 0.5rem;
+    width: 80%;
+    .input-invalid {
+      border: 4px solid rgb(155, 0, 0);
+    }
+    .auth-input {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      width: 100%;
+      input {
+        width: 100%;
+      }
+    }
+    .accept-license {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-self: flex-end;
+      align-items: center;
+      gap: 5px;
+      label {
+        display: block;
+        font-family: "Quicksand";
+        font-size: 1.2rem;
+      }
+      .checkmark {
+        height: 1.6rem;
+        min-width: 1.6rem;
+        background-color: #eee;
+        &:hover {
+          background-color: aqua;
+        }
+        svg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    input {
+      height: 3rem;
+      width: 100%;
+    }
+    button {
+      height: 3rem;
+      width: 70%;
+    }
+  }
+  .login-form {
+    justify-content: flex-start;
+    gap: 1rem;
+    input {
+      height: 3rem;
+      width: 80%;
+    }
+    button {
+      height: 2rem;
+      width: 70%;
+    }
+  }
+}

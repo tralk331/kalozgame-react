@@ -1,0 +1,44 @@
+.nav-item {
+  width: 100%;
+  min-height: 10%;
+  a {
+    text-decoration: none;
+    display: block;
+    height: 100%;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 100%;
+    width: 100%;
+    background-color: $color2;
+    color: $color5;
+    font-size: 2rem;
+    border-bottom: 1px solid $color6;
+    transition: background-color 0.2s linear;
+    .drop-icon {
+      margin-left: auto;
+      padding-right: 5px;
+    }
+    &:hover {
+      background-color: $color6;
+      color: $color1;
+    }
+  }
+}
+.nav-item-enter {
+  opacity: 0;
+}
+.nav-item-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+.nav-item-exit {
+  opacity: 1;
+}
+.nav-item-exit-active {
+  opacity: 0;
+
+  transition: opacity 300ms ease-in;
+}

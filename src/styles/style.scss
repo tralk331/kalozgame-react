@@ -1,0 +1,57 @@
+$color1: #f3dfbd;
+$color2: #cead72;
+$color3: #aa8039;
+$color4: #865a0f;
+$color5: #613d00;
+$color6: #2e1d01;
+@mixin scrollbars(
+  $size,
+  $foreground-color,
+  $background-color: mix($foreground-color, white, 50%)
+) {
+  // For Google Chrome
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  & {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow: hidden;
+}
+.content {
+  position: absolute;
+  top: 10vh;
+  width: 100%;
+  max-height: 90vh;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  overflow-y: auto;
+}
+@import "./header";
+@import "./navbar";
+@import "./nav-item";
+@import "./authforms";
+@import "./homepage";
