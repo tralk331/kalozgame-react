@@ -1,5 +1,5 @@
 import React, { useState} from 'react'
-import {BsArrowUpShort, BsC, BsCheck} from 'react-icons/bs'
+import {BsCheck} from 'react-icons/bs'
 import AuthInput from './AuthInput'
 import axios from 'axios'
 const RegForm = ({changeForm}) => {
@@ -26,7 +26,7 @@ const RegForm = ({changeForm}) => {
     const submitRegister = async (e) => {
         e.preventDefault()
         for (const key in errorData){
-            if (errorData[key] && key != "finalError") {
+            if (errorData[key] && key !== "finalError") {
                 setErrorData({...errorData, finalError:"Please fill all input fields with proper values!"})
                 return
             }
@@ -50,13 +50,13 @@ const RegForm = ({changeForm}) => {
     const rfc2822 = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
     const supportedEmails = /[\s\S]*@(gmail\.com|yahoo\.com|hotmail\.com|freemail\.hu|citromail\.hu)/
     const checkValidEmail = () => {
-        if(regData.email == "") setErrorData({...errorData, emailError:"E-mail field can't be empty!"})
+        if(regData.email === "") setErrorData({...errorData, emailError:"E-mail field can't be empty!"})
         else if(!rfc2822.test(regData.email) && regData.email !== "") setErrorData({...errorData, emailError:"Please input a valid e-mail address"})
         else if (!supportedEmails.test(regData.email)) setErrorData({...errorData, emailError:"Unsupported e-mail provider."})
         else setErrorData({...errorData, emailError:""})
     }
     const checkValidUsername = () => {
-        if (regData.username == "") setErrorData({...errorData, usernameError:"Username field can't be empty!"})
+        if (regData.username === "") setErrorData({...errorData, usernameError:"Username field can't be empty!"})
         else if (regData.username.length < 4) setErrorData({...errorData, usernameError:"Username should be 4 or more characters."})
         else if (regData.username.length > 24) setErrorData({...errorData, usernameError:"Username too long!"})
         else if (!/^[A-Za-z][A-Za-z0-9]*$/.test(regData.username)) setErrorData({...errorData, usernameError:"Only letters of the english alphabet and numbers allowed."})
@@ -64,7 +64,7 @@ const RegForm = ({changeForm}) => {
         else setErrorData({...errorData, usernameError:""})
     }
     const checkValidPassword = () => {
-        if (regData.password == "") setErrorData({...errorData, passwordError:"Password can't be empty!"})
+        if (regData.password === "") setErrorData({...errorData, passwordError:"Password can't be empty!"})
         else if (regData.passwordAgain !== "" && regData.password !== regData.passwordAgain) setErrorData({...errorData, passwordError:"Passwords don't match"})
         else if (/^(.{0,7})$/.test(regData.password))  setErrorData({...errorData, passwordError:"Passwords must be at least 8 characters long"})
         else if (!/[0-9]+/.test(regData.password)) setErrorData({...errorData, passwordError:"Passwords must contain a number"})

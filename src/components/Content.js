@@ -1,9 +1,9 @@
-import React , {useState} from 'react'
+import React , {useState, useContext} from 'react'
 import HomePage from "./HomePage";
 import PlayPage from "./PlayPage";
 import ProfilePage from "./ProfilePage"
 import {  Switch, Route} from 'react-router-dom'
-
+import {UserContext} from "../context/UserContext"
 const Content = () => {
     const [isScrolled,setIsScrolled] = useState(false);
     const handleScroll = (e) => {
@@ -13,8 +13,9 @@ const Content = () => {
             setIsScrolled(false)
         }
     }
+    const {user} = useContext(UserContext);
     return(
-        <div className="content" scroll onScroll={handleScroll}>
+        <div className="content" onScroll={handleScroll}>
         <Switch>
           <Route exact path="/">
             <HomePage scrolled={isScrolled}></HomePage>
@@ -23,7 +24,7 @@ const Content = () => {
             <PlayPage></PlayPage>
           </Route>
           <Route exact path="/profile">
-            <ProfilePage/>
+            {user === null ? <span>Please log in!</span> : <ProfilePage/>}
           </Route>
         </Switch>
         </div>

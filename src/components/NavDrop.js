@@ -1,4 +1,4 @@
-import react from "react";
+import React from 'react';
 import {useState} from 'react'
 import {BsChevronDoubleDown} from "react-icons/bs"
 const NavDrop = ({id,text,icon,children,toggleChild}) => {

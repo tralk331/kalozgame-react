@@ -1,8 +1,10 @@
-import React, {useEffect, useState} from 'react'
-import { render } from '@testing-library/react'
+import React, {useState, useContext} from 'react'
 import axios from 'axios'
-
+import {HeaderContext} from '../context/HeaderContext'
+import { UserContext } from '../context/UserContext';
 const LoginForm = ({changeForm}) => {
+    const {toggleAuth} = useContext(HeaderContext);
+    const {retrieveProfileData} = useContext(UserContext);
     const [loginData, setLoginData] = useState({
         email: "",
         password: ""
@@ -18,13 +20,19 @@ const LoginForm = ({changeForm}) => {
             return;
         }
         try{
-            const res = await axios.post("http://api.kalozga.me/login", JSON.stringify(loginData))
+            const res = await axios.post("http://api.kalozgame.probaljaki.hu/login", JSON.stringify(loginData))
             if (res.status === 200) {
-                {localStorage.setItem("authToken",res.data)}
-                console.log(localStorage.getItem("authToken"))
+                console.log(res.data)
+                localStorage.setItem("authToken",res.data)
+                retrieveProfileData()
+                toggleAuth()
+            } else {
+                setLoginError(res.data)
             }
         } catch (error) {
-            setLoginError(error.response.data);
+            if(error.response.data){
+                setLoginError(error.response.data);
+            }
         }
     }
     return(

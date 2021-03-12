@@ -15,15 +15,16 @@
   transform: scale(0.9);
   transition: opacity 200ms, transform 200ms;
 }
+
 .auth-form {
+  display: none;
   overflow: hidden;
   position: absolute;
-  top: 10%;
+  top: 10vh;
   left: 0;
   width: 100%;
-  height: 90%;
+  height: 90vh;
   background-image: linear-gradient($color5, $color6);
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
@@ -115,6 +116,7 @@
       .checkmark {
         height: 1.6rem;
         min-width: 1.6rem;
+        max-width: 1.6rem;
         background-color: #eee;
         &:hover {
           background-color: aqua;
@@ -146,4 +148,31 @@
       width: 70%;
     }
   }
+}
+.auth-form-enter {
+  display: flex;
+  opacity: 0;
+  transform: scale(0.9);
+}
+.auth-form-enter-active {
+  display: flex;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 200ms, transform 200ms;
+}
+.auth-form-enter-done {
+  display: flex;
+}
+.auth-form-exit {
+  display: flex;
+  opacity: 1;
+}
+.auth-form-exit-active {
+  display: flex;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 200ms, transform 200ms;
+}
+.auth-form-exit-done {
+  display: none;
 }

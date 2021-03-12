@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import {BsChevronDoubleDown} from 'react-icons/bs'
 const HomePage = ({scrolled}) => {
 

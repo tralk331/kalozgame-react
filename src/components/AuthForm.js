@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import Axios from 'axios'
 import LoginForm from './LoginForm'
 import RegForm from "./RegForm"
 import {CSSTransition, SwitchTransition} from "react-transition-group"
