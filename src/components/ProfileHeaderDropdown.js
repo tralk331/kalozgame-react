@@ -3,10 +3,10 @@ import {UserContext} from '../context/UserContext'
 import {MdExitToApp} from 'react-icons/md'
 import {Link} from 'react-router-dom'
 const ProfileHeaderDropdown = () => {
-    const {user,retrieveProfileData} = useContext(UserContext);
+    const {retrieveProfileData} = useContext(UserContext);
     const LogOut = () => {
         localStorage.removeItem('authToken')
-        retrieveProfileData()
+        setTimeout(retrieveProfileData,100)
     }
     return(
         <div className="profile-header-dropdown">

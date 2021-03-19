@@ -7,14 +7,13 @@ import AuthForm from "./components/AuthForm";
 import Content from "./components/Content";
 import ProfileHeaderDropdown from './components/ProfileHeaderDropdown';
 import {
-  BrowserRouter as Router,
+  BrowserRouter as Router
 } from "react-router-dom";
 import {CSSTransition} from 'react-transition-group';
 import {UserContext} from './context/UserContext';
 import {HeaderContext} from './context/HeaderContext';
 import Axios from 'axios';
 import csabi from "./assets/csabi.jpg"
-
 function App() {
   useEffect(() =>{
     retrieveProfileData()
@@ -40,31 +39,30 @@ function App() {
           Authorization: 'Bearer ' + localStorage.getItem("authToken")
         }
       })
-      if (res.data.profilePicturePath === null) res.data.profilePicturePath = csabi
-      setUser(res.data)
-      console.log(res.data);
+      if (res.status === 200){
+        if (res.data.profilePicturePath === null) res.data.profilePicturePath = csabi
+        setUser(res.data)
+      }
     } catch (error){
-      console.log(error)
+      if (error.response.data === "Please verify your e-mail address!") setUser("unverified")
     }
     
   }
   return (
-    <div className="App">
-      <UserContext.Provider value={{user , retrieveProfileData}}>
-        <Router>
-          <HeaderContext.Provider value={{navOpen,toggleNav,toggleAuth}}>
-            <Header navState={navOpen} toggleNav={toggleNav} toggleAuth={toggleAuth}></Header>
-            <Navbar navOpen={navOpen}></Navbar>
-            <CSSTransition in={authOpen} classNames="auth-form" timeout={200}>
-              {user === null ? <AuthForm/> : <ProfileHeaderDropdown></ProfileHeaderDropdown>}
-            </CSSTransition>
-            
-          </HeaderContext.Provider>
-          <Content></Content>
-        </Router>
-      </UserContext.Provider>
-
-    </div>
+    <Router>
+      <div className="App">
+        <UserContext.Provider value={{user , retrieveProfileData}}>
+            <HeaderContext.Provider value={{navOpen,toggleNav,toggleAuth}}>
+              <Header navState={navOpen} toggleNav={toggleNav} toggleAuth={toggleAuth}></Header>
+              <Navbar navOpen={navOpen}></Navbar>
+              <CSSTransition in={authOpen} classNames="auth-form" timeout={200}>
+                {user === null ? <AuthForm/> : <ProfileHeaderDropdown></ProfileHeaderDropdown>}
+              </CSSTransition>
+              <Content></Content>
+            </HeaderContext.Provider>
+        </UserContext.Provider>
+      </div>
+    </Router>
   );
 }
 

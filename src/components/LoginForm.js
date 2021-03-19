@@ -22,7 +22,6 @@ const LoginForm = ({changeForm}) => {
         try{
             const res = await axios.post("http://api.kalozgame.probaljaki.hu/login", JSON.stringify(loginData))
             if (res.status === 200) {
-                console.log(res.data)
                 localStorage.setItem("authToken",res.data)
                 retrieveProfileData()
                 toggleAuth()

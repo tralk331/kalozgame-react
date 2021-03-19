@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import {RiAnchorLine, RiCloseLine, RiAccountBoxFill} from 'react-icons/ri';
 import {UserContext} from '../context/UserContext';
 import {HeaderContext} from '../context/HeaderContext'

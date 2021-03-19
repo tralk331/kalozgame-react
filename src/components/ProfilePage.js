@@ -14,14 +14,24 @@ const ProfilePage = () => {
     return(
         <div className="profile-page">
             <div className="profile-top">
-                <img src={user.profilePicturePath} alt="Profile picture"></img>
-                {user.username}
+                <img src={user.profilePicturePath} alt="Profile"></img>
+                <div id="profileName">{user.username}</div>
             </div>
             <div className="profile-stats">
-                <img src={gold}></img>
+                <img src={gold} alt=""></img>
                 {user.gold}
-                <img src={xp}></img>
+                <img src={xp} alt=""></img>
                 {user.experience}
+            </div>
+            <div className="match-history">
+                <div className="match-history-title">
+                    Match history
+                </div>
+                <div className="match-history-content">
+                    <div className="match">Match history not avaliable yet!</div>
+                    <div className="match"></div>
+                    <div className="match"></div>
+                </div>
             </div>
         </div>
     )

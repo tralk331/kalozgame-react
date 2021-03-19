@@ -41,7 +41,7 @@ const RegForm = ({changeForm}) => {
             const response = await axios.post("http://api.kalozgame.probaljaki.hu/register",JSON.stringify(regData))
             if (response.status === 422) setErrorData({...errorData, finalError:response.data})
             else if (response.status === 200) {
-                console.log("success");
+                setErrorData({...errorData, finalError:"Registered successfully. Please check your inbox to verify your account!"});
             }
         } catch (err){
             console.log(err)
