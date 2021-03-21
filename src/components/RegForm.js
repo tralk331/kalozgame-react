@@ -33,6 +33,7 @@ const RegForm = ({changeForm}) => {
         }
         if (!rulesAccepted) {
             setErrorData({...errorData, finalError:"You need to agree to the terms and conditions!"})
+            return
         }
         else {
             setErrorData({...errorData, finalError:""})
@@ -44,7 +45,7 @@ const RegForm = ({changeForm}) => {
                 setErrorData({...errorData, finalError:"Registered successfully. Please check your inbox to verify your account!"});
             }
         } catch (err){
-            console.log(err)
+            setErrorData({...errorData, finalError:"Something went wrong!"})
         }
     }
     const rfc2822 = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
