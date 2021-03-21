@@ -1,29 +1,35 @@
 .home-page {
+  height: 100%;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  overflow-y: auto;
   .home-welcome {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     align-items: center;
-    height: 90vh;
+    justify-content: space-between;
+    height: 100%;
     background-image: url("../assets/home.png");
     background-size: cover;
     background-position-x: 60%;
     background-position-y: 50%;
     background-repeat: no-repeat;
     .more-content-arrow {
-      margin: 5px auto;
       color: rgb(199, 199, 199);
       font-size: 1.5rem;
     }
     .title {
+      padding-top: 50%;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       align-items: center;
-      height: 70%;
+      height: 80%;
       width: 100%;
-      position: absolute;
-      top: 15%;
       h1 {
         font-family: "Permanent Marker";
         text-align: center;
@@ -47,25 +53,21 @@
         }
       }
       @media screen and (min-width: 768px) {
-        max-width: 50%;
-        position: absolute;
-        top: 13%;
-        left: 3rem;
+        padding: 10% 45% 0% 10%;
         h1 {
           font-size: 3rem;
         }
-      } 
+      }
     }
   }
-  .home-ships{
-    background-image: url('../assets/ships.jpg');
+  .home-ships {
+    background-image: url("../assets/ships.jpg");
     background-size: cover;
-    height: 700px;
-    h1{
+    height: 100%;
+    h1 {
       text-align: center;
       padding-top: 20%;
       font-family: monospace;
-      
     }
   }
 }

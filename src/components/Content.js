@@ -6,24 +6,18 @@ import PageNotAvaliable from "./PageNotAvaliable"
 import {Switch, Route, useHistory} from 'react-router-dom'
 import {UserContext} from "../context/UserContext"
 const Content = () => {
-    const [isScrolled,setIsScrolled] = useState(false);
+    
     const history = useHistory();
-    const handleScroll = (e) => {
-      if (e.target.scrollTop > 2){
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
-    }
+
     const {user} = useContext(UserContext);
     useEffect(() => {
       if (user === "unverified") history.push("/unverified")
     },[user])
     return(
-        <div className="content" onScroll={handleScroll}>
+        <div className="content">
         <Switch>
           <Route exact path="/">
-            <HomePage scrolled={isScrolled}></HomePage>
+            <HomePage></HomePage>
           </Route>
           <Route exact path="/play">
             <PlayPage></PlayPage>

@@ -42,15 +42,9 @@ body {
   position: absolute;
   top: 10vh;
   width: 100%;
-  height: 90%;
+  height: 90vh;
+  min-height: 90vh;
   max-height: 90vh;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
-  overflow-y: auto;
 }
 @import "./header";
 @import "./navbar";
@@ -59,4 +53,4 @@ body {
 @import "./authforms";
 @import "./homepage";
 @import "./profilepage";
-@import "./page-unavaliable"
+@import "./page-unavaliable";

@@ -10,7 +10,7 @@ const LoginForm = ({changeForm}) => {
         password: ""
     })
     const [loginError, setLoginError] = useState("");
-    const handleLoginInput = (e) =>{
+    const handleLoginInput = (e) => {
         setLoginData({...loginData, [e.target.name]: e.target.value})
     }
     const submitLogin = async e => {
